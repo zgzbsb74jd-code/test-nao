@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>タップ記録</title>
+
+</head>
+
+<body>
+
+<h1>タップ回数: <span id="count">0</span></h1>
+
+<button onclick="tap()">タップ</button>
+
+<script>
+
+let records = JSON.parse(localStorage.getItem("records") || "[]");
+
+function tap() {
+
+  records.push(new Date().toISOString());
+
+  localStorage.setItem("records", JSON.stringify(records));
+
+  update();
+
+}
+
+function update() {
+
+  document.getElementById("count").innerText = records.length;
+
+}
+
+update();
+
+</script>
+
+</body>
+
+</html>
